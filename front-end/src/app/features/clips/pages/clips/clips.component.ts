@@ -33,7 +33,8 @@ import { LoaderComponent } from '../../../../shared/components/loader/loader.com
 import VideoComponent from '../../components/video/video.component';
 import { playVideo } from '../../../../shared/helpers/play-video';
 import { ClipsService } from '../../services/clips.service';
-import { IClip } from '../../../../core/models/clip.model';
+
+import { IClip } from '@pushit-ha/lib';
 
 @Component({
   standalone: true,

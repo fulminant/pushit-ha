@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { IClipResponse, IGetClipParams } from '../../../core/models/clip-response.model';
 import { environment } from '../../../../environments/environment';
+import { IClipResponse, IGetClipParams } from '@pushit-ha/lib';
 
 
 @Injectable({ providedIn: 'root' })

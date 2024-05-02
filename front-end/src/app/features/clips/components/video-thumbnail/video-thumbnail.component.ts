@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-import { IClip } from '../../../../core/models/clip.model';
+import { IClip } from '@pushit-ha/lib';
 
 @Component({
   standalone: true,

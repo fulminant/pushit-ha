@@ -7,7 +7,7 @@ import {
 import { NgClass } from '@angular/common';
 
 import { playVideo } from '../../../../shared/helpers/play-video';
-import { IClip } from '../../../../core/models/clip.model';
+import { IClip } from '@pushit-ha/lib';
 
 @Component({
   standalone: true,
