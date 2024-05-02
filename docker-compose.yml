@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  back-end-app:
+    container_name: back-end-app
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PUSHIT_SESSION_ID=134620
+      - PUSHIT_API_URL=https://api.pushitreplays.com/new-api
+    ports:
+      - "3000:3000"
+    build:
+      dockerfile: ./back-end/Dockerfile
+  front-end-app:
+    container_name: front-end-app
+    restart: always
+    ports:
+      - "8090:80"
+    depends_on:
+      - backend-app
+    build:
+      context: .
+      dockerfile: ./front-end/Dockerfile
