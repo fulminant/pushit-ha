@@ -14,4 +14,8 @@ export class ClipsService {
   public getClips(params: IGetClipParams): Observable<IClipResponse> {
     return this.http.get<IClipResponse>(`${environment.api}/clips`, { params: { ...params } })
   }
+
+  public getClip(clipId: number): Observable<IClipResponse> {
+    return this.http.get<IClipResponse>(`${environment.api}/clips/${clipId}`)
+  }
 }

@@ -30,7 +30,6 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import VideoThumbnailComponent from '../../components/video-thumbnail/video-thumbnail.component';
 import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
-import { IGetClipParams } from '../../../../core/models/clip-response.model';
 import VideoComponent from '../../components/video/video.component';
 import { playVideo } from '../../../../shared/helpers/play-video';
 import { ClipsService } from '../../services/clips.service';
@@ -91,14 +90,9 @@ export default class ClipsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const { clipId } = this.activatedRoute.snapshot.params;
-
     this.clipId = clipId;
 
-    if (this.clipId) {
-      this.getVideo({ clipId });
-    } else {
-      this.getVideo({ page: 1, limit: 1 });
-    }
+    this.getVideo(clipId);
   }
 
   public scrolledIndexChange(): void {
@@ -137,9 +131,13 @@ export default class ClipsComponent implements OnInit, OnDestroy {
       );
   }
 
-  private getVideo(params: IGetClipParams): void {
+  private getVideo(clipId: number): void {
     this.loading = true;
-    this.clipsService.getClips(params)
+    const request = clipId
+      ? this.clipsService.getClip(clipId)
+      : this.clipsService.getClips({ page: 1, limit: 1 });
+
+    request
       .pipe(
         takeUntil(this.unsubscribe$),
         catchError(err => {

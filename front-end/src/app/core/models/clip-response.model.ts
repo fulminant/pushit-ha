@@ -11,5 +11,4 @@ export interface IClipResponse {
 export interface IGetClipParams {
   page?: number;
   limit?: number;
-  clipId?: string;
 }
