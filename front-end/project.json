@@ -8,16 +8,26 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/front-end",
         "index": "front-end/src/index.html",
         "main": "front-end/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "front-end/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["front-end/src/favicon.ico", "front-end/src/assets"],
-        "styles": ["front-end/src/styles.scss"],
+        "assets": [
+          "front-end/src/assets/favicon.png",
+          "front-end/src/assets"
+        ],
+        "styles": [
+          "front-end/src/styles.scss",
+          "front-end/src/styles/tailwind.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -42,7 +52,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "front-end/src/environments/environment.ts",
+              "with": "front-end/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -70,7 +86,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "front-end/jest.config.ts"
       }

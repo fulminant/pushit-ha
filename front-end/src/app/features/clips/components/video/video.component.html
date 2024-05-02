@@ -1,0 +1,11 @@
+<video
+  #videoElement
+  [ngClass]="{'place-center h-full': isFullScreen}"
+  controls
+  loop
+  muted
+  playsinline
+>
+  <source [src]="video.url" type="video/mp4">
+</video>
+

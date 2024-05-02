@@ -1,0 +1,34 @@
+@if (loading) {
+  <app-loader class="place-center"></app-loader>
+} @else if (error || !video) {
+  <p class="text-red-600 place-center text-center text-2xl">
+    Sorry. There are no video or something wrong happen. Try to reload the page.
+  </p>
+} @else {
+  <div class="grid grid-cols-12 gap-x-3 grow">
+    <div
+      class="grid col-span-9 place-items-center"
+      [ngClass]="{
+        'col-span-9': !clipId
+      }">
+      <app-video [video]="video" [isFullScreen]="!!clipId"></app-video>
+    </div>
+
+    <div class="grid col-span-3 overflow-hidden px-5" *ngIf="!clipId">
+      <ng-container *ngIf="infinite | async as videoList">
+        <cdk-virtual-scroll-viewport
+          (scrolledIndexChange)="scrolledIndexChange()"
+          [itemSize]="250"
+          class="h-full"
+        >
+          <app-video-thumbnail
+            *cdkVirtualFor="let video of videoList"
+            [video]="video"
+            routerLink="{{video.id}}"
+            class="video-container"
+          ></app-video-thumbnail>
+        </cdk-virtual-scroll-viewport>
+      </ng-container>
+    </div>
+  </div>
+}

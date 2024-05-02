@@ -1,0 +1,37 @@
+.change-theme {
+  width: 54px;
+  height: 30px;
+  margin-right: 40px;
+
+  .slider {
+    cursor: pointer;
+    inset: 0;
+    transition: 0.4s;
+    border-radius: 34px;
+
+    &:before {
+      border-radius: 50%;
+      position: absolute;
+      content: '\263E';
+      height: 35px;
+      width: 35px;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      transition: 0.4s;
+      box-shadow: 0 0 15px #2020203d;
+      font-size: 25px;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  input:checked + .slider:before {
+    content: "\263C";
+    transform: translateX(24px);
+    background: white;
+  }
+}

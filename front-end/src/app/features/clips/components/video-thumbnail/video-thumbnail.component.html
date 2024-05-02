@@ -1,0 +1,19 @@
+<div>
+  <div class="flex gap-2.5 cursor-pointer justify-center">
+    <span class="text-slate-900 dark:text-white">{{ video.id }}</span>
+    <span class="text-slate-900 dark:text-white">{{ video.clipCreationTime | date }}</span>
+  </div>
+
+  <div class="video relative cursor-pointer rounded-md overflow-hidden">
+    <svg class="absolute play-icon">
+      <use href="/assets/icons/play.svg#play"></use>
+    </svg>
+
+    <video
+      loop
+      muted
+      playsinline
+      [src]="video.url"
+    ></video>
+  </div>
+</div>

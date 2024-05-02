@@ -1,0 +1,35 @@
+:host {
+  display: inline-block;
+  height: 100%;
+}
+
+.video {
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    transition: background ease-in-out 300ms;
+  }
+
+  &:hover {
+    .play-icon {
+      opacity: 1;
+    }
+
+    &:before {
+      background: theme('colors.black' / .4);
+    }
+  }
+
+  .play-icon {
+    transition: opacity ease-in-out 300ms;
+    opacity: 0;
+    top: 50%;
+    width: 60px;
+    aspect-ratio: 1;
+    color: white;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
