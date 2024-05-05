@@ -12,13 +12,14 @@ export class ClipsController {
   getClips(
     @Query('page') page: number,
     @Query('limit') limit: number,
-    @Param('clipId') clipId: number,
+    @Query('sortBy') sortBy: string,
+    @Query('sortDirection') sortDirection: string,
   ) {
-    return this.clipsService.getClips(page, limit, clipId);
+    return this.clipsService.getClips(page, limit, sortBy, sortDirection);
   }
 
   @Get(':clipId')
   getClip(@Param('clipId') clipId: number) {
-    return this.clipsService.getClips(1, 1, clipId);
+    return this.clipsService.getClip(clipId);
   }
 }

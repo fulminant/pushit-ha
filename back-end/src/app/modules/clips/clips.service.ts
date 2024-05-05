@@ -16,11 +16,23 @@ export class ClipsService {
   ) {
   }
 
-  getClips(page = 1, limit = 10, clipId?: number): Observable<AxiosResponse<IClipResponse>> {
+  getClips(page = 1, limit = 10, sortBy = 'date', sortDirection = 'desc'): Observable<AxiosResponse<IClipResponse>> {
+    console.log(sortBy, 'ss');
     return this.httpService.get(`${this.apiConfig.apiUrl}/clips`, {
       params: {
         page,
         limit,
+        sortBy,
+        sortDirection,
+        sessionId: this.apiConfig.sessionId,
+      }
+    })
+      .pipe(map(({ data }) => data));
+  }
+
+  getClip(clipId: number): Observable<AxiosResponse<IClipResponse>> {
+    return this.httpService.get(`${this.apiConfig.apiUrl}/clips`, {
+      params: {
         clipId,
         sessionId: this.apiConfig.sessionId,
       }
